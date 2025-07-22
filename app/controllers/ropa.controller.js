@@ -23,6 +23,7 @@ ropaController.create = async (req, res) => {
     }
 };
 
+//Obtener ropa
 ropaController.getAll = async (req, res) => {
     try {
         const data = await ropaModel.find();
@@ -40,11 +41,24 @@ ropaController.getAll = async (req, res) => {
     }
 };
 
+// Actualizar ropa
 ropaController.update = async (req,res) => {
     try {
-        const id = req.params.id; // aqui puede cambiar dependiendo de que utilicemos como id
+        const key = req.params.key;
+        const value = req.params.value; 
         const data = req.body;
-        const resp = await ropaModel.findByIdAndUpdate(id, data, {new : true});
+
+        const filter = {[key]: value}
+
+        const resp = await ropaModel.findOneAndUpdate(filter, data, {new : true});
+
+        if (!resp) {
+            return res.status(404).json({
+                success: false,
+                message: `No se encontro ningún registro con ${key} = ${value}`
+            });
+        }
+
         return res.status(200).json({
             success: true,
             data: resp,
@@ -59,24 +73,31 @@ ropaController.update = async (req,res) => {
     }
 };
 
+//Eliminar ropa
 ropaController.delete = async (req,res) => {
     try {
-        const id = req.params.id;
-        const data = await ropaModel.findById(id);
+        const key = req.params.key
+        const value = req.params.value;
+        
+        const filter = {[key]: value};
+
+        const data = await ropaModel.findOne(filter);
+
         if (!data) {
             return res.status(404).json({
                 success: false,
-                message: "Correspondencia no encontrada",
-                error: error.message
+                message: "ropa no encontrada"
             })
-        } else {
-            await data.deleteOne();
-            return res.status(200).json({
-                success: true,
-                data: data,
-                message: "Eliminado correctamente"
-            })
-        }
+        } 
+
+        await data.deleteOne();
+
+        return res.status(200).json({
+            success: true,
+            data: data,
+            message: "Eliminado correctamente"
+        })
+        
     } catch (error) {
         return res.status(500).json({
             success:false,
