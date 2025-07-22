@@ -108,5 +108,4 @@ ropaController.delete = async (req,res) => {
 };
 
 
-
 module.exports = ropaController;

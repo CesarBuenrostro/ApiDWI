@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const ropaSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     nombre: {
         type: String,
         required: true
@@ -25,6 +25,6 @@ const ropaSchema = mongoose.Schema({
     timeStamp: true
 });
 
-const ropaModel = mongoose.model('ropa', ropaSchema)
+const userModel = mongoose.model('user', userSchema)
 
-module.exports = ropaModel;
+module.exports = userModel;
