@@ -4,6 +4,6 @@ const conexion = require('./app/config/conexion');
 
 conexion.connect();
 
-app.listen(config.PORT, () => {
+app.listen(config.PORT, '0.0.0.0', () => {
     console.log(`App running in PORT: ${config.PORT}`);
 });

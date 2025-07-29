@@ -6,7 +6,7 @@ const ropaSchema = mongoose.Schema({
         required: true
     },
     descripcion: {
-        type: String,
+        type: String
     },
     precio: {
         type: Number,
@@ -15,9 +15,23 @@ const ropaSchema = mongoose.Schema({
     talla: {
         type: String,
         required: true
+    },
+    imagen: { // URL de la imagen
+        type: String
+    },
+    genero: { // hombre, mujer, unisex
+        type: String,
+        enum: ['hombre', 'mujer', 'unisex'],
+        required: true
+    },
+    temporada: { // primavera, verano, otoño, invierno, etc.
+        type: String
+    },
+    fecha: {
+        type: Date,
+        default: Date.now
     }
-})
+});
 
-const ropaModel = mongoose.model('ropa', ropaSchema)
-
+const ropaModel = mongoose.model('ropa', ropaSchema);
 module.exports = ropaModel;
