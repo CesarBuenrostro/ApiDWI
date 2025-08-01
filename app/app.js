@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const routerRopa = require('./routes/ropa.routes');
 const routerUser = require('./routes/usuario.routes');
+const routerCarrito = require('./routes/carrito.routes');
 
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
@@ -12,6 +13,7 @@ app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 app.use('/valeua', routerRopa);
 app.use('/valeua', routerUser)
+app.use('/valeua', routerCarrito)
 
 
 module.exports = app;

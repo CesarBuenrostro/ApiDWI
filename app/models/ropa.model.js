@@ -16,15 +16,15 @@ const ropaSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    imagen: { // URL de la imagen
+    imagen: { 
         type: String
     },
-    genero: { // hombre, mujer, unisex
+    genero: { 
         type: String,
         enum: ['hombre', 'mujer', 'unisex'],
         required: true
     },
-    temporada: { // primavera, verano, otoño, invierno, etc.
+    temporada: { 
         type: String
     },
     fecha: {

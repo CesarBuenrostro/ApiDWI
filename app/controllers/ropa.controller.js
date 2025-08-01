@@ -41,6 +41,38 @@ ropaController.getAll = async (req, res) => {
     }
 };
 
+
+// Obtener ropa utilizando Valores de campo
+ropaController.searchItem = async (req, res) => {
+    try {
+        const key = req.params.key;
+        const value = req.params.value;
+
+        const filter = {[key]: value}
+
+        const data = await ropaModel.findOne(filter);
+
+        if (!data) {
+            return res.status(404).json({
+                success: false,
+                message: "ropa no encontrada"
+            })
+        } 
+
+        return res.status(200).json({
+            success: true,
+            data: data,
+            message: "consulta realizada  con éxito"
+        })
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: "La consulta no se realizo  correctamente",
+            error: error.message
+        })
+    }
+}
+
 // Actualizar ropa
 ropaController.update = async (req,res) => {
     try {
