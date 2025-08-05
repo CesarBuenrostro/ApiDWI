@@ -98,7 +98,7 @@ carritoController.updateProduct = async (req, res) => {
 
 // Eliminar producto del carrito
 carritoController.deleteProduct = async (req, res) => {
-  const { productoId } = req.body;
+  const { productoId } = req.query;
 
   try {
     const carrito = await Cart.findOne({ usuarioId: req.user._id });

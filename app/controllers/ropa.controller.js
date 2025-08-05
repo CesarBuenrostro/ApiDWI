@@ -50,7 +50,7 @@ ropaController.searchItem = async (req, res) => {
 
         const filter = {[key]: value}
 
-        const data = await ropaModel.findOne(filter);
+        const data = await ropaModel.find(filter);
 
         if (!data) {
             return res.status(404).json({
