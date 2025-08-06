@@ -14,7 +14,10 @@ const cartItemSchema = new mongoose.Schema({
 		required: true,
 		min: [1, 'Cantidad mínima 1']
 	},
-	talla: String
+	talla: String,
+	imagen: {
+		type: String
+	}
 });
 
 const cartSchema = new mongoose.Schema({

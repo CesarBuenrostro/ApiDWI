@@ -14,7 +14,7 @@ historyController.create = async (req, res) => {
             return res.status(400).json({ message: 'Carrito vacío o no encontrado' });
         }
         
-        const nuevoPedido = new history({
+        const nuevoPedido = new History({
             usuarioId,
             productos: carrito.items.map(item => ({
                 productoId: item.productoId,

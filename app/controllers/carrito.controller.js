@@ -61,7 +61,8 @@ carritoController.addProduct = async (req, res) => {
         nombre: producto.nombre,
         precio: producto.precio,
         talla: producto.talla,
-        cantidad
+        cantidad,
+        imagen: producto.imagen
       });
     }
 
