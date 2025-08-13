@@ -6,6 +6,12 @@ const routerUser = require('./routes/usuario.routes');
 const routerCarrito = require('./routes/carrito.routes');
 const routerHistory = require('./routes/history.routes');
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('../swagger.config');
+
+// Montar la interfaz de Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 require('dotenv').config()
