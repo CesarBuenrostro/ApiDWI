@@ -11,7 +11,7 @@ ropaController.create = async (req, res) => {
         return res.status(201).json({
             success: true,
             data: resp,
-            message: "Se ha creado correctamente"
+            message: "Se ha creado correctamente, con los datos enviados"
         });
 
     } catch (error) {
